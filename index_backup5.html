@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Smart City Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    #chat-container {
+      margin-top: 10vh;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center">
+
+  <div id="chat-container" class="w-80 md:w-96 h-[600px] rounded-xl shadow-lg bg-white flex flex-col">
+    <div class="bg-blue-600 text-white p-3 flex justify-between items-center">
+      <span class="font-bold">Cyber Assistant</span>
+      <button id="minimize-btn" class="hover:opacity-80">−</button>
+    </div>
+    <div id="root" class="flex-1 overflow-y-auto p-3"></div>
+  </div>
+
+  <script>
+    // Minimize / maximize chatbox
+    const chatContainer = document.getElementById("chat-container");
+    document.getElementById("minimize-btn").addEventListener("click", () => {
+      if(chatContainer.classList.contains("h-[600px]")) {
+        chatContainer.classList.remove("h-[600px]");
+        chatContainer.classList.add("h-16");
+      } else {
+        chatContainer.classList.remove("h-16");
+        chatContainer.classList.add("h-[600px]");
+      }
+    });
+
+    // Watsonx Orchestrate embed config
+    window.wxOConfiguration = {
+      orchestrationID: "20251009-1602-0878-90c5-a00019d24867_20251009-1603-1506-60d9-74e34fd65453",
+      hostURL: "https://eu-central-1.dl.watson-orchestrate.ibm.com",
+      rootElementID: "root",
+      chatOptions: {
+          agentId: "b64754a7-5379-430d-af3d-7d9caf42b262", 
+          agentEnvironmentId: "52b2d825-e08c-44fe-81da-d682de0f0008",
+      }
+    };
+
+    setTimeout(function () {
+      const script = document.createElement('script');
+      script.src = `${window.wxOConfiguration.hostURL}/wxochat/wxoLoader.js?embed=true`;
+      script.addEventListener('load', function () {
+          wxoLoader.init();
+      });
+      document.head.appendChild(script);
+    }, 0);
+  </script>
+
+</body>
+</html>
+

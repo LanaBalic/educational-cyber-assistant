@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Smart City Chat</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Chatbox u gornjoj 1/3 stranice */
+    #chat-container {
+      margin-top: 10vh; /* stavlja chatbox oko 1/3 od vrha */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 h-screen flex justify-center">
+
+  <div id="chat-container" class="w-80 md:w-96 h-[600px] rounded-xl shadow-lg bg-white flex flex-col overflow-hidden">
+    <div class="bg-blue-600 text-white p-3 flex justify-between items-center">
+      <span class="font-bold">Cyber Assistant</span>
+      <button id="minimize-btn" class="hover:opacity-80">−</button>
+    </div>
+    <div id="root" class="flex-1 overflow-y-auto p-3"></div>
+  </div>
+
+  <script>
+    // Minimize / maximize chatbox
+    const chatContainer = document.getElementById("chat-container");
+    document.getElementById("minimize-btn").addEventListener("click", () => {
+      if(chatContainer.classList.contains("h-[600px]()
+
